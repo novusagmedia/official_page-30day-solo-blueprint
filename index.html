@@ -3,680 +3,716 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Free 2-Day Starter Pack — GymRat Basketball</title>
+  <title>30 Day Solo Hooper Blueprint — GymRat Basketball</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,400;0,600;0,700;1,400&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg:        #0D0B08;
-      --bg2:       #131109;
-      --charcoal:  #1C1A16;
-      --surface:   #201E1A;
-      --orange:    #FF5A00;
-      --orange-d:  #CC4800;
-      --orange-xs: rgba(255,90,0,.06);
-      --white:     #FFFFFF;
-      --lgray:     #C4BAB0;
-      --gray:      #8A7F76;
-      --muted:     #4A4540;
-      --border:    rgba(255,255,255,.06);
+      --cream:    #F5F2EE;
+      --warm:     #EDE8E0;
+      --border:   #DDD5C8;
+      --text:     #1A1610;
+      --gray:     #8A7F76;
+      --lgray:    #C4BAB0;
+      --black:    #0D0B08;
+      --dark:     #141210;
+      --charcoal: #1C1A16;
+      --surface:  #201E1A;
+      --dborder:  rgba(255,255,255,.07);
+      --orange:   #FF5A00;
+      --orange-d: #CC4800;
+      --white:    #FFFFFF;
     }
 
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Barlow', sans-serif;
-      background: var(--bg);
-      color: var(--white);
-      overflow-x: hidden;
-    }
+    body { font-family: 'Barlow', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
     img { display: block; max-width: 100%; }
 
-    /* ─────────────────────────────────────
-       HEADER
-    ───────────────────────────────────── */
-    .hdr {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-      height: 68px; padding: 0 52px;
-      display: flex; align-items: center; justify-content: space-between;
-      background: rgba(13,11,8,.92);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
+    /* ═══ NAV ═══ */
+    .nav {
+      position: sticky; top: 0; z-index: 200;
+      background: rgba(245,242,238,.96);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
+      height: 64px; padding: 0 52px;
+      display: flex; align-items: center; justify-content: space-between;
     }
-    .hdr-logo { height: 34px; width: auto; }
-    .hdr-badge {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 800; font-size: 10px; letter-spacing: .22em;
-      text-transform: uppercase; color: var(--orange);
-      border: 1px solid rgba(255,90,0,.35);
-      padding: 5px 14px;
-    }
+    .nav-logo { height: 30px; width: auto; }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--gray); text-decoration: none; transition: color .2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; background: var(--orange); color: var(--white); text-decoration: none; padding: 10px 20px; transition: background .2s; white-space: nowrap; }
+    .nav-cta:hover { background: var(--orange-d); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--text); transition: all .3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+    .mob-menu { display: none; position: fixed; top: 64px; left: 0; right: 0; background: var(--cream); border-top: 1px solid var(--border); padding: 24px 32px 32px; z-index: 199; flex-direction: column; gap: 16px; }
+    .mob-menu.open { display: flex; }
+    .mob-menu a { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 24px; text-transform: uppercase; color: var(--text); text-decoration: none; }
+    .mob-cta-m { background: var(--orange) !important; color: var(--white) !important; padding: 12px 20px; font-size: 14px !important; width: fit-content; }
 
-    /* ─────────────────────────────────────
-       HERO
-    ───────────────────────────────────── */
+    /* ═══ BUTTONS ═══ */
+    .btn-orange { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: .07em; background: var(--orange); color: var(--white); text-decoration: none; padding: 16px 40px; display: inline-block; transition: background .2s, transform .15s; cursor: pointer; border: none; }
+    .btn-orange:hover { background: var(--orange-d); transform: translateY(-2px); }
+    .btn-orange:active { transform: none; }
+    .btn-orange.lg { font-size: 24px; padding: 20px 48px; }
+    .btn-orange.full { display: block; text-align: center; }
+
+    /* ═══ REVEALS ═══ */
+    .rv { opacity: 0; transform: translateY(20px); transition: opacity .65s ease, transform .65s ease; }
+    .rv.in { opacity: 1; transform: none; }
+    .d1 { transition-delay: .1s; } .d2 { transition-delay: .2s; } .d3 { transition-delay: .3s; } .d4 { transition-delay: .4s; }
+
+    /* ═══ EYEBROW ═══ */
+    .eyebrow { display: inline-flex; align-items: center; gap: 10px; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 11px; letter-spacing: .26em; text-transform: uppercase; color: var(--orange); margin-bottom: 14px; }
+    .eyebrow::before { content: ''; width: 20px; height: 2px; background: var(--orange); flex-shrink: 0; }
+    .eyebrow.light { color: rgba(255,90,0,.85); }
+    .eyebrow.light::before { background: rgba(255,90,0,.85); }
+
+    /* ═══════════════════════════
+       HERO — LIGHT/CREAM
+    ═══════════════════════════ */
     .hero {
-      min-height: 100vh;
-      padding-top: 68px;
-      display: grid;
-      grid-template-columns: 52% 48%;
-      position: relative;
-      overflow: hidden;
+      background: var(--cream);
+      min-height: calc(100vh - 64px);
+      display: grid; grid-template-columns: 55% 45%;
+      overflow: hidden; position: relative;
     }
-    .hero::before {
-      content: '';
-      position: absolute; inset: 0; pointer-events: none;
-      background:
-        radial-gradient(ellipse 55% 75% at 75% 45%, rgba(255,90,0,.09) 0%, transparent 65%),
-        radial-gradient(ellipse 35% 40% at 10% 85%, rgba(255,90,0,.04) 0%, transparent 55%);
-    }
-
     .hero-left {
-      padding: 72px 48px 80px 72px;
-      display: flex; flex-direction: column;
-      justify-content: center;
+      padding: 68px 52px 68px 72px;
+      display: flex; flex-direction: column; justify-content: center;
       position: relative; z-index: 2;
     }
-    .eyebrow {
-      display: inline-flex; align-items: center; gap: 10px;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 800; font-size: 11px; letter-spacing: .26em;
-      text-transform: uppercase; color: var(--orange);
-      margin-bottom: 18px;
-    }
-    .eyebrow::before {
-      content: ''; width: 20px; height: 2px;
-      background: var(--orange); flex-shrink: 0;
-    }
-    .hero-headline {
+    .hero-logo { width: 96px; margin-bottom: 22px; }
+    .hero-h1 {
       font-family: 'Bebas Neue', sans-serif;
-      letter-spacing: .02em; line-height: .85;
-      margin-bottom: 22px;
+      font-size: clamp(54px, 7.5vw, 108px);
+      letter-spacing: .02em; line-height: .86;
+      color: var(--black); margin-bottom: 16px;
     }
-    .hero-headline .free-word {
-      font-size: clamp(88px, 12.5vw, 168px);
-      color: var(--orange); display: block;
-    }
-    .hero-headline .title-line {
-      font-size: clamp(36px, 4.8vw, 68px);
-      color: var(--white); display: block;
-    }
-    .hero-tagline {
-      font-size: 15px; color: var(--gray);
-      line-height: 1.7; max-width: 400px;
-      margin-bottom: 14px; font-style: italic;
-    }
-    .hero-target {
-      border-left: 3px solid var(--orange);
-      padding: 14px 20px;
-      background: var(--orange-xs);
-      max-width: 400px; margin-bottom: 36px;
-    }
-    .hero-target p {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700; font-size: 14px;
-      color: var(--lgray); line-height: 1.55;
-    }
-    .btn-primary {
-      display: inline-block;
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 20px; letter-spacing: .07em;
-      background: var(--orange); color: var(--white);
-      text-decoration: none; padding: 17px 44px;
-      max-width: 400px; width: 100%; text-align: center;
-      transition: background .2s, transform .15s;
-      cursor: pointer; border: none;
-    }
-    .btn-primary:hover { background: var(--orange-d); transform: translateY(-2px); }
-    .btn-primary:active { transform: none; }
-    .hero-micros {
-      display: flex; gap: 18px; flex-wrap: wrap;
-      margin-top: 14px;
-    }
-    .hero-micros span {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700; font-size: 10px; letter-spacing: .14em;
-      text-transform: uppercase; color: var(--muted);
-    }
+    .hero-h1 .orange { color: var(--orange); display: block; }
+    .hero-tagline { font-size: 14px; color: var(--gray); max-width: 420px; line-height: 1.65; margin-bottom: 8px; font-style: italic; }
+    .hero-target { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 14px; color: var(--text); max-width: 420px; line-height: 1.55; margin-bottom: 24px; padding: 13px 18px; border-left: 3px solid var(--orange); background: rgba(255,90,0,.05); }
+    .hero-bullets { list-style: none; display: flex; flex-direction: column; gap: 9px; margin-bottom: 32px; max-width: 420px; }
+    .hero-bullets li { display: flex; gap: 12px; align-items: flex-start; font-size: 14px; color: var(--text); line-height: 1.45; }
+    .ck { width: 16px; height: 16px; background: var(--orange); clip-path: polygon(20% 50%,40% 70%,80% 25%,88% 33%,40% 83%,12% 58%); flex-shrink: 0; margin-top: 2px; }
+    .hero-cta-wrap { display: flex; flex-direction: column; gap: 10px; max-width: 380px; }
+    .hero-price-note { font-size: 13px; color: var(--gray); }
+    .hero-trust { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 4px; }
+    .hero-trust span { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--lgray); display: flex; align-items: center; gap: 5px; }
 
-    .hero-right { position: relative; overflow: hidden; }
-    .hero-right img {
-      width: 100%; height: 100%;
-      object-fit: cover; object-position: center top;
-      min-height: 620px;
-    }
-    .hero-overlay {
-      position: absolute; inset: 0;
-      background:
-        linear-gradient(to right, var(--bg) 0%, rgba(13,11,8,.2) 25%, transparent 45%),
-        linear-gradient(to top, var(--bg) 0%, transparent 30%);
-    }
+    .hero-right { position: relative; overflow: hidden; background: var(--warm); }
+    .hero-right img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+    .hero-right::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, var(--cream) 0%, transparent 28%), linear-gradient(to top, var(--cream) 0%, transparent 18%); }
 
-    /* ─────────────────────────────────────
-       CREDENTIALS BAR
-    ───────────────────────────────────── */
-    .creds {
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      background: var(--surface);
-      border-top: 1px solid rgba(255,90,0,.18);
-      border-bottom: 1px solid var(--border);
-    }
-    .cred {
-      padding: 22px 28px;
-      border-right: 1px solid var(--border);
-      display: flex; flex-direction: column; gap: 3px;
-    }
+    /* ═══════════════════════════
+       CREDENTIALS — DARK
+    ═══════════════════════════ */
+    .creds { background: var(--black); display: grid; grid-template-columns: repeat(4, 1fr); }
+    .cred { padding: 26px 32px; border-right: 1px solid var(--dborder); display: flex; flex-direction: column; gap: 4px; }
     .cred:last-child { border-right: none; }
-    .cred-num {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 34px; color: var(--orange);
-      letter-spacing: .04em; line-height: 1;
-    }
-    .cred-lbl {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700; font-size: 11px;
-      letter-spacing: .14em; text-transform: uppercase;
-      color: var(--muted);
-    }
+    .cred-num { font-family: 'Bebas Neue', sans-serif; font-size: 38px; color: var(--orange); letter-spacing: .04em; line-height: 1; }
+    .cred-lbl { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: #4A4540; }
 
-    /* ─────────────────────────────────────
-       WHAT YOU GET
-    ───────────────────────────────────── */
-    .wyg {
-      background: var(--bg2);
-      padding: 96px 72px;
-    }
-    .wyg-inner {
-      display: grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap: 72px; align-items: start;
-      max-width: 1140px;
-      margin: 0 auto;
-    }
-    .sec-h {
-      font-family: 'Bebas Neue', sans-serif;
-      letter-spacing: .03em; line-height: .9; color: var(--white);
-    }
-    .wyg-left .sec-h {
-      font-size: clamp(44px, 5vw, 66px);
-      margin-bottom: 32px;
-    }
-    .wyg-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 36px; }
-    .wyg-item {
-      display: flex; align-items: stretch;
-      background: var(--charcoal);
-      transition: background .2s;
-      cursor: default;
-    }
+    /* ═══════════════════════════
+       STORY — LIGHT
+    ═══════════════════════════ */
+    .story { background: var(--cream); display: grid; grid-template-columns: 1fr 1fr; min-height: 640px; }
+    .story-photo { position: relative; overflow: hidden; }
+    .story-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+    .story-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, transparent 65%, var(--cream) 100%); }
+    .story-copy { padding: 80px 72px 80px 56px; display: flex; flex-direction: column; justify-content: center; }
+    .story-copy .sec-h { font-family: 'Bebas Neue', sans-serif; font-size: clamp(52px, 5.5vw, 80px); letter-spacing: .03em; line-height: .88; color: var(--black); margin-bottom: 26px; }
+    .story-body { display: flex; flex-direction: column; gap: 14px; font-size: 16px; color: var(--gray); line-height: 1.75; margin-bottom: 28px; }
+    .story-quote { border-left: 3px solid var(--orange); padding: 18px 22px; background: var(--warm); }
+    .story-quote p { font-family: 'Bebas Neue', sans-serif; font-size: clamp(17px, 1.8vw, 22px); color: var(--black); letter-spacing: .03em; line-height: 1.25; margin-bottom: 10px; }
+    .story-quote cite { font-size: 12px; color: var(--gray); font-style: normal; font-family: 'Barlow Condensed', sans-serif; letter-spacing: .1em; text-transform: uppercase; }
+
+    /* ═══════════════════════════
+       WHAT YOU GET — DARK
+    ═══════════════════════════ */
+    .wyg { background: var(--black); padding: 96px 72px; display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+    .wyg-left .sec-h { font-family: 'Bebas Neue', sans-serif; font-size: clamp(44px, 5vw, 66px); letter-spacing: .03em; line-height: .9; color: var(--white); margin-bottom: 30px; }
+    .wyg-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 32px; }
+    .wyg-item { display: flex; align-items: stretch; background: var(--charcoal); transition: background .2s; }
     .wyg-item:hover { background: var(--surface); }
-    .wyg-num {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 18px; color: var(--orange); letter-spacing: .04em;
-      width: 54px; flex-shrink: 0;
-      display: flex; align-items: center; justify-content: center;
-      border-right: 1px solid rgba(255,90,0,.18);
-      padding: 16px 0;
-    }
-    .wyg-body { padding: 16px 20px; }
-    .wyg-body strong {
-      display: block;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 800; font-size: 14px;
-      letter-spacing: .05em; text-transform: uppercase;
-      color: var(--white); margin-bottom: 4px;
-    }
-    .wyg-body p { font-size: 14px; color: var(--gray); line-height: 1.5; }
+    .wyg-dot-col { width: 52px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; border-right: 1px solid rgba(255,90,0,.18); }
+    .wyg-dot { width: 7px; height: 7px; background: var(--orange); border-radius: 50%; }
+    .wyg-body { padding: 16px 18px; }
+    .wyg-body p { font-size: 15px; color: var(--lgray); line-height: 1.55; }
+    .wyg-body strong { color: var(--white); }
+    .wyg-callout { border-left: 3px solid var(--orange); padding: 15px 20px; background: rgba(255,90,0,.06); margin-bottom: 30px; }
+    .wyg-callout p { font-size: 15px; color: var(--white); line-height: 1.55; }
+    .wyg-right { position: relative; overflow: hidden; }
+    .wyg-right img { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: top center; }
+    .wyg-right::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, var(--black) 0%, transparent 35%); }
+    .wyg-caption { position: absolute; bottom: 0; left: 0; right: 0; z-index: 1; padding: 20px; }
+    .wyg-caption .cap-role { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--orange); }
+    .wyg-caption .cap-name { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: .06em; color: var(--white); }
 
-    .wyg-right { position: sticky; top: 92px; }
-    .coach-wrap { position: relative; overflow: hidden; }
-    .coach-wrap img {
-      width: 100%; aspect-ratio: 2/3;
-      object-fit: cover; object-position: center top;
-    }
-    .coach-wrap::after {
-      content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(13,11,8,.85) 0%, transparent 50%);
-    }
-    .coach-caption {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      z-index: 1; padding: 20px 20px;
-    }
-    .coach-caption .c-role {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700; font-size: 10px; letter-spacing: .18em;
-      text-transform: uppercase; color: var(--orange);
-    }
-    .coach-caption .c-name {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 18px; letter-spacing: .06em; color: var(--white);
-    }
+    /* ═══════════════════════════
+       BONUS STACK — LIGHT
+    ═══════════════════════════ */
+    .bonus { background: var(--cream); padding: 96px 72px; }
+    .bonus-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 48px; flex-wrap: wrap; gap: 20px; }
+    .bonus-header .sec-h { font-family: 'Bebas Neue', sans-serif; font-size: clamp(48px, 6vw, 80px); letter-spacing: .03em; line-height: .9; color: var(--black); }
+    .bonus-header .sub { font-size: 15px; color: var(--gray); margin-top: 8px; }
+    .bonus-header-right { font-family: 'Bebas Neue', sans-serif; font-size: clamp(40px, 5vw, 60px); color: var(--border); letter-spacing: .02em; line-height: .9; }
+    .bonus-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-bottom: 48px; }
+    .bonus-card { background: var(--white); padding: 28px 22px 22px; border-top: 3px solid var(--orange); position: relative; transition: box-shadow .3s, transform .3s; }
+    .bonus-card:hover { box-shadow: 0 16px 40px rgba(26,18,10,.09); transform: translateY(-4px); }
+    .val-badge { position: absolute; top: 14px; right: 14px; background: var(--orange); color: var(--white); font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 10px; letter-spacing: .12em; padding: 3px 8px; text-transform: uppercase; }
+    .bonus-n { font-family: 'Bebas Neue', sans-serif; font-size: 12px; letter-spacing: .2em; color: var(--orange); margin-bottom: 8px; }
+    .bonus-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 16px; text-transform: uppercase; color: var(--black); letter-spacing: .03em; margin-bottom: 8px; line-height: 1.2; padding-right: 52px; }
+    .bonus-desc { font-size: 13px; color: var(--gray); line-height: 1.55; }
+    .value-box { border: 2px solid var(--black); padding: 40px 48px; max-width: 580px; margin: 0 auto 44px; text-align: center; }
+    .value-box .vl { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--gray); margin-bottom: 6px; }
+    .value-box .vold { font-family: 'Bebas Neue', sans-serif; font-size: 30px; color: var(--lgray); text-decoration: line-through; letter-spacing: .04em; margin-bottom: 6px; }
+    .value-box .vnew { font-family: 'Bebas Neue', sans-serif; font-size: 88px; color: var(--orange); letter-spacing: .02em; line-height: 1; margin-bottom: 8px; }
+    .value-box .vnote { font-size: 13px; color: var(--gray); }
 
-    /* ─────────────────────────────────────
-       WHY DIFFERENT
-    ───────────────────────────────────── */
-    .why {
-      background: var(--charcoal);
-      padding: 80px 72px;
-      position: relative; overflow: hidden;
-    }
-    .why::after {
-      content: 'REAL';
-      position: absolute; right: -24px; top: 50%;
-      transform: translateY(-50%);
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(120px, 18vw, 240px);
-      color: rgba(255,90,0,.045); letter-spacing: .02em;
-      line-height: 1; pointer-events: none; user-select: none;
-    }
-    .why-inner {
-      position: relative; z-index: 1;
-      max-width: 680px;
-      margin: 0 auto;
-    }
-    .why-inner .sec-h {
-      font-size: clamp(40px, 5vw, 58px);
-      margin-bottom: 22px;
-    }
-    .why-inner p {
-      font-size: 17px; color: var(--gray); line-height: 1.75;
-    }
+    /* ═══════════════════════════
+       FOR / NOT FOR — DARK
+    ═══════════════════════════ */
+    .fit { background: var(--black); padding: 96px 72px; }
+    .fit .sec-h { font-family: 'Bebas Neue', sans-serif; font-size: clamp(52px, 7vw, 88px); letter-spacing: .03em; line-height: .9; color: var(--white); margin-bottom: 48px; }
+    .fit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
+    .fit-col { padding: 36px 32px; }
+    .fit-col.yes { background: #1A1610; border-top: 3px solid var(--orange); }
+    .fit-col.no  { background: #161412; border-top: 3px solid #2A2620; }
+    .fit-col-title { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: .08em; margin-bottom: 22px; }
+    .fit-col.yes .fit-col-title { color: var(--orange); }
+    .fit-col.no  .fit-col-title { color: var(--lgray); }
+    .fit-list { list-style: none; display: flex; flex-direction: column; gap: 13px; }
+    .fit-list li { display: flex; gap: 12px; align-items: flex-start; font-size: 14px; color: var(--lgray); line-height: 1.5; }
+    .fit-icon { width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 9px; font-weight: 900; margin-top: 1px; }
+    .fit-col.yes .fit-icon { background: var(--orange); color: var(--white); }
+    .fit-col.no  .fit-icon { background: transparent; border: 1.5px solid #FF4444; color: #FF4444; }
 
-    /* ─────────────────────────────────────
-       FORM
-    ───────────────────────────────────── */
-    .form-sec {
-      background: var(--bg);
-      padding: 96px 72px;
-      position: relative; overflow: hidden;
-    }
-    .form-sec::before {
-      content: '';
-      position: absolute; top: 0; left: 50%;
-      transform: translateX(-50%);
-      width: 640px; height: 1px;
-      background: linear-gradient(to right, transparent, var(--orange), transparent);
-    }
-    .form-sec::after {
-      content: '';
-      position: absolute; top: 0; left: 50%;
-      transform: translateX(-50%);
-      width: 100%; height: 380px;
-      background: radial-gradient(ellipse 55% 100% at 50% 0%, rgba(255,90,0,.07) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .form-wrap {
-      position: relative; z-index: 1;
-      max-width: 520px; margin: 0 auto; text-align: center;
-    }
-    .form-eyebrow {
-      display: inline-flex; align-items: center; gap: 10px;
-      justify-content: center;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 800; font-size: 11px; letter-spacing: .26em;
-      text-transform: uppercase; color: var(--orange);
-      margin-bottom: 14px;
-    }
-    .form-eyebrow::before {
-      content: ''; width: 20px; height: 2px;
-      background: var(--orange); flex-shrink: 0;
-    }
-    .form-wrap .sec-h {
-      font-size: clamp(52px, 7vw, 88px);
-      margin-bottom: 10px;
-    }
-    .form-wrap .sec-h em {
-      color: var(--orange); font-style: normal; display: block;
-    }
-    .form-lead {
-      font-size: 16px; color: var(--gray);
-      line-height: 1.65; margin-bottom: 32px;
-    }
-    .f-field { margin-bottom: 12px; }
-    .f-input {
-      width: 100%;
-      background: rgba(255,255,255,.03);
-      border: 1px solid rgba(255,255,255,.08);
-      color: var(--white);
-      font-family: 'Barlow', sans-serif; font-size: 16px;
-      padding: 14px 18px; outline: none;
-      transition: border-color .2s, background .2s;
-      border-radius: 0; -webkit-appearance: none;
-    }
-    .f-input::placeholder { color: var(--muted); }
-    .f-input:focus {
-      border-color: rgba(255,90,0,.5);
-      background: rgba(255,90,0,.03);
-    }
-    .f-submit {
-      display: block; width: 100%; margin-top: 32px;
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 24px; letter-spacing: .08em;
-      background: var(--orange); color: var(--white);
-      border: none; cursor: pointer; padding: 20px;
-      text-decoration: none; text-align: center;
-      transition: background .2s, transform .15s;
-    }
-    .f-submit:hover { background: var(--orange-d); transform: translateY(-2px); }
-    .f-submit:active { transform: none; }
-    .f-disclaimer {
-      font-size: 12px; color: var(--muted);
-      line-height: 1.55; margin-top: 14px; text-align: center;
-    }
+    /* ═══════════════════════════
+       QUOTE STRIP — DARK
+    ═══════════════════════════ */
+    .quote-strip { background: var(--dark); padding: 80px 72px; display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+    .quote-photo { position: relative; overflow: hidden; }
+    .quote-photo img { width: 100%; aspect-ratio: 4/3; object-fit: cover; object-position: center top; }
+    .quote-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, var(--dark) 0%, transparent 40%); }
+    .quote-copy { display: flex; flex-direction: column; justify-content: center; }
+    .big-quote { font-family: 'Bebas Neue', sans-serif; font-size: clamp(30px, 3.5vw, 50px); color: var(--white); letter-spacing: .03em; line-height: 1.1; margin-bottom: 20px; }
+    .big-quote em { color: var(--orange); font-style: normal; }
+    .big-quote-author { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: #4A4540; }
 
-    /* ─────────────────────────────────────
-       THANK YOU (hidden until submit)
-    ───────────────────────────────────── */
-    #thankyou {
-      display: none;
-      background: var(--bg);
-      min-height: calc(100vh - 68px);
-      padding: 100px 72px;
-      flex-direction: column;
-      align-items: center; justify-content: center;
-      text-align: center;
-    }
-    #thankyou.active { display: flex; }
-    .ty-icon {
-      width: 80px; height: 80px;
-      border: 2px solid var(--orange);
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 36px;
-    }
-    .ty-h {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(52px, 7vw, 88px);
-      letter-spacing: .03em; line-height: .88;
-      margin-bottom: 18px;
-    }
-    .ty-h em { color: var(--orange); font-style: normal; display: block; }
-    .ty-p { font-size: 17px; color: var(--gray); line-height: 1.7; max-width: 500px; margin-bottom: 8px; }
-    .ty-spam { font-size: 14px; color: var(--muted); }
-    .ty-tease {
-      margin-top: 44px; padding: 28px 36px;
-      border: 1px solid rgba(255,90,0,.22);
-      background: rgba(255,90,0,.04);
-      max-width: 540px; text-align: left;
-    }
-    .ty-tease-tag {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 800; font-size: 10px; letter-spacing: .22em;
-      text-transform: uppercase; color: var(--orange);
-      margin-bottom: 10px;
-    }
-    .ty-tease p { font-size: 15px; color: var(--lgray); line-height: 1.65; }
-    .ty-tease strong { color: var(--white); }
+    /* ═══════════════════════════
+       GUARANTEE — LIGHT
+    ═══════════════════════════ */
+    .guar { background: var(--cream); padding: 96px 72px; }
+    .guar-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; max-width: 1080px; margin: 0 auto; }
+    .guar-left .sec-h { font-family: 'Bebas Neue', sans-serif; font-size: clamp(48px, 5.5vw, 72px); letter-spacing: .03em; line-height: .9; color: var(--black); margin-bottom: 24px; }
+    .guar-left p { font-size: 16px; color: var(--gray); line-height: 1.75; margin-bottom: 14px; }
+    .guar-left .sub { font-size: 14px; color: var(--lgray); }
+    .guar-box { border: 2px solid var(--orange); padding: 40px; box-shadow: 0 0 48px rgba(255,90,0,.07); }
+    .guar-box-icon { margin-bottom: 18px; }
+    .guar-box h3 { font-family: 'Bebas Neue', sans-serif; font-size: 30px; letter-spacing: .06em; color: var(--black); margin-bottom: 14px; }
+    .guar-box p { font-size: 15px; color: var(--gray); line-height: 1.7; }
 
-    /* ─────────────────────────────────────
-       FOOTER
-    ───────────────────────────────────── */
-    .foot {
-      background: var(--bg2);
-      border-top: 1px solid var(--border);
-      padding: 28px 72px;
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 10px;
-    }
-    .foot img { height: 28px; }
-    .foot p { font-size: 12px; color: var(--muted); }
+    /* ═══════════════════════════
+       PRICING — DARK
+    ═══════════════════════════ */
+    .pricing { background: var(--black); padding: 96px 72px; }
+    .pricing-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; max-width: 1080px; margin: 0 auto; }
+    .urgency-pill { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,90,0,.1); border: 1px solid rgba(255,90,0,.4); color: var(--orange); font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; padding: 6px 16px; margin-bottom: 24px; }
+    .pricing-left .sec-h { font-family: 'Bebas Neue', sans-serif; font-size: clamp(52px, 6.5vw, 88px); letter-spacing: .03em; line-height: .88; color: var(--white); margin-bottom: 18px; }
+    .pricing-left > p { font-size: 15px; color: var(--lgray); line-height: 1.7; margin-bottom: 26px; }
+    .price-compare { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-bottom: 40px; }
+    .price-reg { font-family: 'Bebas Neue', sans-serif; font-size: 30px; color: #3A3530; text-decoration: line-through; letter-spacing: .04em; }
+    .price-arrow { color: var(--orange); font-size: 20px; }
+    .price-now { font-family: 'Bebas Neue', sans-serif; font-size: 88px; color: var(--orange); letter-spacing: .02em; line-height: 1; }
+    .pricing-right { display: flex; flex-direction: column; gap: 18px; }
+    .pricing-right .btn-orange { display: block; text-align: center; font-size: 22px; padding: 22px; }
+    .price-note { font-size: 13px; color: var(--gray); line-height: 1.7; }
+    .price-micros { display: flex; flex-direction: column; gap: 9px; }
+    .price-micros span { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--lgray); display: flex; align-items: center; gap: 8px; }
+    .price-micros span::before { content: ''; width: 6px; height: 6px; background: var(--orange); border-radius: 50%; flex-shrink: 0; }
 
-    /* ─────────────────────────────────────
-       SCROLL REVEALS
-    ───────────────────────────────────── */
-    .rv {
-      opacity: 0; transform: translateY(22px);
-      transition: opacity .7s ease, transform .7s ease;
-    }
-    .rv.in { opacity: 1; transform: none; }
-    .d1 { transition-delay: .1s; }
-    .d2 { transition-delay: .2s; }
-    .d3 { transition-delay: .3s; }
-    .d4 { transition-delay: .4s; }
+    /* ═══════════════════════════
+       FAQ — LIGHT
+    ═══════════════════════════ */
+    .faq { background: var(--cream); padding: 96px 72px; }
+    .faq-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; max-width: 1080px; margin: 0 auto; }
+    .faq-left .sec-h { font-family: 'Bebas Neue', sans-serif; font-size: clamp(52px, 6vw, 80px); letter-spacing: .03em; line-height: .9; color: var(--black); margin-bottom: 16px; }
+    .faq-left p { font-size: 15px; color: var(--gray); line-height: 1.7; }
+    .faq-list { display: flex; flex-direction: column; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-item:first-child { border-top: 1px solid var(--border); }
+    .faq-q { width: 100%; background: none; border: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; padding: 18px 0; text-align: left; gap: 12px; }
+    .faq-q-t { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 16px; color: var(--black); letter-spacing: .02em; line-height: 1.3; }
+    .faq-ico { width: 24px; height: 24px; border: 1.5px solid var(--border); border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: background .2s, border-color .2s; }
+    .faq-item.open .faq-ico { background: var(--orange); border-color: var(--orange); }
+    .faq-plus { font-size: 15px; color: var(--orange); line-height: 1; transition: transform .3s; font-weight: 900; }
+    .faq-item.open .faq-plus { transform: rotate(45deg); color: var(--white); }
+    .faq-ans { max-height: 0; overflow: hidden; transition: max-height .4s ease; }
+    .faq-ans p { font-size: 14px; color: var(--gray); line-height: 1.75; padding-bottom: 16px; }
+    .faq-item.open .faq-ans { max-height: 220px; }
 
-    /* ─────────────────────────────────────
-       RESPONSIVE
-    ───────────────────────────────────── */
+    /* ═══════════════════════════
+       FOOTER CTA — DARK
+    ═══════════════════════════ */
+    .footer-cta { background: var(--black); padding: 96px 72px 0; overflow: hidden; }
+    .footer-cta-top { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; padding-bottom: 72px; border-bottom: 1px solid var(--dborder); }
+    .fcta-left .big1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(52px, 8vw, 112px); line-height: .88; color: var(--white); letter-spacing: .02em; }
+    .fcta-left .big2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(52px, 8vw, 112px); line-height: .88; color: var(--orange); letter-spacing: .02em; margin-bottom: 22px; }
+    .fcta-left p { font-size: 15px; color: var(--gray); max-width: 400px; line-height: 1.65; }
+    .fcta-right { display: flex; flex-direction: column; gap: 14px; }
+    .fcta-right .btn-orange { text-align: center; font-size: 20px; }
+    .fcta-right .note { font-size: 13px; color: var(--gray); text-align: center; }
+    .fcta-micro { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+    .fcta-micro span { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: #3A3530; }
+    .footer-brand { margin: 0 -72px; overflow: hidden; }
+    .footer-brand-text { font-family: 'Bebas Neue', sans-serif; font-size: clamp(100px, 18vw, 260px); letter-spacing: -.02em; line-height: .82; color: rgba(255,255,255,.04); white-space: nowrap; padding: 0 72px; }
+    .footer-bottom { padding: 24px 0 28px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; border-top: 1px solid rgba(255,255,255,.04); }
+    .footer-logo { height: 32px; width: auto; }
+    .footer-copy { font-size: 12px; color: #2A2620; }
+
+    /* ═══ RESPONSIVE ═══ */
     @media (max-width: 960px) {
-      .hdr { padding: 0 28px; }
+      .nav { padding: 0 28px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
       .hero { grid-template-columns: 1fr; }
-      .hero-left { padding: 60px 32px 52px; }
+      .hero-left { padding: 56px 32px 52px; }
       .hero-right { height: 460px; }
       .creds { grid-template-columns: 1fr 1fr; }
       .cred:nth-child(2) { border-right: none; }
-      .cred:nth-child(1), .cred:nth-child(2) { border-bottom: 1px solid var(--border); }
-      .wyg { padding: 72px 32px; }
-      .wyg-inner { grid-template-columns: 1fr; gap: 48px; }
+      .cred:nth-child(1),.cred:nth-child(2) { border-bottom: 1px solid var(--dborder); }
+      .story { grid-template-columns: 1fr; }
+      .story-photo { display: none; }
+      .story-copy { padding: 64px 32px; }
+      .wyg { grid-template-columns: 1fr; gap: 48px; padding: 72px 32px; }
       .wyg-right { display: none; }
-      .why { padding: 64px 32px; }
-      .form-sec { padding: 72px 32px; }
-      .form-card { padding: 32px 24px; }
-      .foot { padding: 24px 32px; }
-      #thankyou { padding: 72px 32px; }
+      .bonus { padding: 72px 32px; }
+      .bonus-grid { grid-template-columns: 1fr 1fr; }
+      .fit { padding: 72px 32px; }
+      .fit-grid { grid-template-columns: 1fr; gap: 3px; }
+      .quote-strip { grid-template-columns: 1fr; gap: 40px; padding: 72px 32px; }
+      .quote-photo { display: none; }
+      .guar { padding: 72px 32px; }
+      .guar-inner { grid-template-columns: 1fr; gap: 44px; }
+      .pricing { padding: 72px 32px; }
+      .pricing-inner { grid-template-columns: 1fr; gap: 44px; }
+      .faq { padding: 72px 32px; }
+      .faq-inner { grid-template-columns: 1fr; gap: 40px; }
+      .footer-cta { padding: 72px 32px 0; }
+      .footer-cta-top { grid-template-columns: 1fr; gap: 44px; padding-bottom: 52px; }
+      .footer-brand { margin: 0 -32px; }
+      .footer-brand-text { padding: 0 32px; }
     }
     @media (max-width: 600px) {
-      .hdr { padding: 0 20px; }
+      .nav { padding: 0 20px; }
       .hero-left { padding: 48px 20px 44px; }
       .hero-right { height: 380px; }
-      .wyg { padding: 60px 20px; }
-      .why { padding: 52px 20px; }
-      .form-sec { padding: 60px 20px; }
-      .form-card { padding: 28px 20px; }
-      .foot { padding: 20px 24px; }
-      #thankyou { padding: 60px 20px; }
-      .ty-tease { padding: 22px 20px; }
+      .bonus-grid { grid-template-columns: 1fr; }
       .creds { grid-template-columns: 1fr; }
-      .cred { border-right: none !important; border-bottom: 1px solid var(--border); }
+      .cred { border-right: none !important; border-bottom: 1px solid var(--dborder); }
       .cred:last-child { border-bottom: none; }
+      .value-box { padding: 28px 20px; }
+      .guar-box { padding: 28px 22px; }
+      .bonus,.fit,.guar,.pricing,.faq { padding: 60px 20px; }
+      .footer-cta { padding: 60px 20px 0; }
     }
   </style>
 </head>
 <body>
 
-<!-- ═══════════════════════════
-     HEADER
-════════════════════════════ -->
-<header class="hdr">
-  <img src="Brand_assets/GRB primary logo.png" alt="GymRat Basketball" class="hdr-logo">
-  <div class="hdr-badge">100% Free</div>
-</header>
+<!-- ══════════════════ NAV ══════════════════ -->
+<nav class="nav" id="nav">
+  <img src="Brand_assets/GRB primary logo.png" alt="GymRat Basketball" class="nav-logo">
+  <ul class="nav-links">
+    <li><a href="#story">Story</a></li>
+    <li><a href="#program">Program</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <a href="#pricing" class="nav-cta">Become a GYMRAT — $150</a>
+  <button class="hamburger" id="hbg" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mob-menu" id="mobmenu">
+  <a href="#story"   onclick="closeMob()">Story</a>
+  <a href="#program" onclick="closeMob()">Program</a>
+  <a href="#pricing" onclick="closeMob()">Pricing</a>
+  <a href="#faq"     onclick="closeMob()">FAQ</a>
+  <a href="#pricing" class="mob-cta-m" onclick="closeMob()">Become a GYMRAT — $150</a>
+</div>
 
-<!-- ═══════════════════════════
-     HERO
-════════════════════════════ -->
+<!-- ══════════════════ HERO ══════════════════ -->
 <section class="hero" id="top">
   <div class="hero-left">
-    <div class="eyebrow rv">Small-Town Hoopers</div>
-    <h1 class="hero-headline">
-      <span class="free-word rv">FREE</span>
-      <span class="title-line rv d1">2-Day Solo<br>Hooper Starter</span>
+    <img src="Brand_assets/GRB primary logo.png" alt="GymRat Basketball" class="hero-logo rv">
+    <h1 class="hero-h1">
+      <span class="rv">30 Day</span>
+      <span class="orange rv d1">Solo Hooper</span>
+      <span class="rv d1">Blueprint</span>
     </h1>
-    <p class="hero-tagline rv d1">Try the first 2 days of my 30-day plan to become the most skilled player in your area.</p>
-    <div class="hero-target rv d2">
-      <p>Built for 11–18 year old hoopers who feel behind because they don't have a trainer or live in a big city.</p>
-    </div>
-    <a href="https://app.coachiq.io/gymrat-basketball-grb/grb/packages?purchase=13025" class="btn-primary rv d2">Get My Free 2-Day Starter →</a>
-    <div class="hero-micros rv d3">
-      <span>🔒 No Credit Card</span>
-      <span>⚡ Instant Delivery</span>
-      <span>✓ 100% Free</span>
+    <p class="hero-tagline rv d2">Become the Most Skilled Player in Your Area in 1 Offseason<br>(Even If You're Stuck in a Small Town With No Trainer)</p>
+    <p class="hero-target rv d2">For serious 11–18 year-old hoopers who feel behind because they don't have elite trainers, crazy facilities, or AAU connections.</p>
+    <ul class="hero-bullets rv d3">
+      <li><span class="ck"></span>Know exactly what to work on every day for 30 days</li>
+      <li><span class="ck"></span>Stop wasting time on random YouTube drills</li>
+      <li><span class="ck"></span>Build handles, shooting, and finishing with game-speed workouts</li>
+      <li><span class="ck"></span>Train anytime, anywhere, straight from your phone</li>
+    </ul>
+    <div class="hero-cta-wrap rv d3">
+      <a href="https://app.coachiq.io/gymrat-basketball-grb/grb?d=available-programs&purchase=12854" class="btn-orange full lg">Become a GYMRAT for $150</a>
+      <p class="hero-price-note">Launch price $150 · Regular price $249 · Lifetime access.</p>
+      <div class="hero-trust">
+        <span>🔒 Secure Checkout</span>
+        <span>✓ 30-Day Guarantee</span>
+        <span>⚡ Instant Access</span>
+      </div>
     </div>
   </div>
   <div class="hero-right">
-    <img src="Pictures/TREY_SHOOTING .JPG" alt="Trey releasing a three-pointer">
-    <div class="hero-overlay"></div>
+    <img src="Pictures/TREY_GRB_BALL.JPG" alt="Trey training in small-town gym">
   </div>
 </section>
 
-<!-- ═══════════════════════════
-     CREDENTIALS BAR
-════════════════════════════ -->
+<!-- ══════════════════ CREDENTIALS ══════════════════ -->
 <div class="creds">
-  <div class="cred rv">
-    <div class="cred-num">5 YRS</div>
-    <div class="cred-lbl">College Basketball</div>
+  <div class="cred rv"><div class="cred-num">5 YRS</div><div class="cred-lbl">College Basketball</div></div>
+  <div class="cred rv d1"><div class="cred-num">D1</div><div class="cred-lbl">3-Point Record Holder</div></div>
+  <div class="cred rv d2"><div class="cred-num">30</div><div class="cred-lbl">Day Blueprint</div></div>
+  <div class="cred rv d3"><div class="cred-num">$495+</div><div class="cred-lbl">Value. $150 Today.</div></div>
+</div>
+
+<!-- ══════════════════ STORY ══════════════════ -->
+<section class="story" id="story">
+  <div class="story-photo">
+    <img src="Pictures/DRU_SHOOTING.jpg" alt="Dru — D1 Record Holder">
   </div>
-  <div class="cred rv d1">
-    <div class="cred-num">D1</div>
-    <div class="cred-lbl">3-Point Record Holder</div>
+  <div class="story-copy">
+    <div class="eyebrow rv">Why Listen to Us</div>
+    <h2 class="sec-h rv" style="font-family:'Bebas Neue',sans-serif; font-size:clamp(52px,5.5vw,80px); letter-spacing:.03em; line-height:.88; color:var(--black); margin-bottom:26px;">WE<br>WERE<br>YOU.</h2>
+    <div class="story-body rv">
+      <p>Trey and Dru grew up in small towns — no elite trainers, no fancy facilities, no AAU connections to fall back on.</p>
+      <p>What they had was a gym, a ball, and a plan.</p>
+      <p>Trey put in 5 years of college basketball — not because he had every advantage, but because he outworked everyone who did.</p>
+      <p>Dru became a D1 record-holder, breaking three-point records at the collegiate level — not on talent alone, but on structured, intentional reps built over years.</p>
+      <p>Neither of us got here by guessing. We used systems. We had blueprints for every workout. We built skills that showed up in games — not just in empty gyms.</p>
+    </div>
+    <div class="story-quote rv d1">
+      <p>"I built the 30 Day Solo Hooper Blueprint for the player I used to be: small town, hungry, and tired of guessing."</p>
+      <cite>— Trey, GymRat Basketball</cite>
+    </div>
   </div>
-  <div class="cred rv d2">
-    <div class="cred-num">30</div>
-    <div class="cred-lbl">Day Full Blueprint</div>
+</section>
+
+<!-- ══════════════════ WHAT YOU GET ══════════════════ -->
+<section class="wyg" id="program">
+  <div class="wyg-left">
+    <div class="eyebrow light rv">The Core Program</div>
+    <h2 class="sec-h rv" style="font-family:'Bebas Neue',sans-serif; font-size:clamp(44px,5vw,66px); letter-spacing:.03em; line-height:.9; color:var(--white); margin-bottom:30px;">WHAT YOU GET<br>INSIDE THE<br>BLUEPRINT</h2>
+    <div class="wyg-list rv">
+      <div class="wyg-item">
+        <div class="wyg-dot-col"><div class="wyg-dot"></div></div>
+        <div class="wyg-body"><p><strong>30 days of step-by-step workouts</strong> — handles, shooting, finishing, footwork, and IQ prompts</p></div>
+      </div>
+      <div class="wyg-item">
+        <div class="wyg-dot-col"><div class="wyg-dot"></div></div>
+        <div class="wyg-body"><p><strong>Clear reps, sets, and rest</strong> so you never stand around guessing in the gym</p></div>
+      </div>
+      <div class="wyg-item">
+        <div class="wyg-dot-col"><div class="wyg-dot"></div></div>
+        <div class="wyg-body"><p><strong>Demo videos for every drill</strong> so you know exactly how to execute</p></div>
+      </div>
+      <div class="wyg-item">
+        <div class="wyg-dot-col"><div class="wyg-dot"></div></div>
+        <div class="wyg-body"><p><strong>Built-in progressions</strong> so workouts get harder as you get better — no plateau</p></div>
+      </div>
+      <div class="wyg-item">
+        <div class="wyg-dot-col"><div class="wyg-dot"></div></div>
+        <div class="wyg-body"><p><strong>Lifetime access inside the GRB app</strong> — your program never expires</p></div>
+      </div>
+    </div>
+    <div class="wyg-callout rv d1">
+      <p><strong>Everything is inside the GRB app.</strong> Download once, train anywhere, straight from your phone.</p>
+    </div>
+    <div class="rv d1">
+      <a href="https://app.coachiq.io/gymrat-basketball-grb/grb?d=available-programs&purchase=12854" class="btn-orange" style="color:var(--black); background:var(--white);">Get Instant Access — $150</a>
+    </div>
   </div>
-  <div class="cred rv d3">
-    <div class="cred-num">FREE</div>
-    <div class="cred-lbl">Days 1 & 2 Today</div>
+  <div class="wyg-right rv">
+    <img src="Pictures/TREY_GRB.jpg" alt="Trey coaching on the court">
+    <div class="wyg-caption">
+      <div class="cap-role">Creator &amp; Coach</div>
+      <div class="cap-name">Trey — GymRat Basketball</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ BONUS STACK ══════════════════ -->
+<section class="bonus">
+  <div class="bonus-header rv">
+    <div>
+      <div class="eyebrow">GYMRAT Exclusive</div>
+      <h2 class="sec-h" style="font-family:'Bebas Neue',sans-serif; font-size:clamp(48px,6vw,80px); letter-spacing:.03em; line-height:.9; color:var(--black);">THE GRB<br>SKILLS VAULT</h2>
+      <p class="sub">GYMRATs Get Everything Below — FREE</p>
+    </div>
+    <div class="bonus-header-right">/FREE</div>
+  </div>
+  <div class="bonus-grid">
+    <div class="bonus-card rv">
+      <span class="val-badge">$99</span>
+      <div class="bonus-n">BONUS 01</div>
+      <div class="bonus-name">The Shooter's Blueprint + 10-Point Shooter's Checklist</div>
+      <div class="bonus-desc">Learn the exact shooting keys D1 record-holder Dru used to break three-point records.</div>
+    </div>
+    <div class="bonus-card rv d1">
+      <span class="val-badge">$99</span>
+      <div class="bonus-n">BONUS 02</div>
+      <div class="bonus-name">30 Day Ball Handling Program</div>
+      <div class="bonus-desc">Extra 30-day progression to stack on the Blueprint so your handle never falls off.</div>
+    </div>
+    <div class="bonus-card rv d2">
+      <span class="val-badge">$79</span>
+      <div class="bonus-n">BONUS 03</div>
+      <div class="bonus-name">Scoring Moves Pack</div>
+      <div class="bonus-desc">Jab Step, Attack Moves, Pick &amp; Roll Series — go-to moves to beat defenders off the dribble.</div>
+    </div>
+    <div class="bonus-card rv">
+      <span class="val-badge">$79</span>
+      <div class="bonus-n">BONUS 04</div>
+      <div class="bonus-name">Finishing &amp; Handles Lab</div>
+      <div class="bonus-desc">Pistol Pete, Tennis Ball Drills, GRB Ball Handling Drills, and Finishing Series.</div>
+    </div>
+    <div class="bonus-card rv d1">
+      <span class="val-badge">$59</span>
+      <div class="bonus-n">BONUS 05</div>
+      <div class="bonus-name">Offseason 'Always Getting Better' Plan</div>
+      <div class="bonus-desc">Exactly what to do after 30 days so you keep climbing instead of sliding back.</div>
+    </div>
+    <div class="bonus-card rv d2">
+      <span class="val-badge">$79</span>
+      <div class="bonus-n">BONUS 06</div>
+      <div class="bonus-name">Mindset &amp; Confidence Pack</div>
+      <div class="bonus-desc">Mental game, discipline, GRB Philosophy, Become Elite Guide, and 5 Tips to Become More Shifty.</div>
+    </div>
+  </div>
+  <div class="value-box rv">
+    <div class="vl">Total Bundle Value</div>
+    <div class="vold">$495+</div>
+    <div class="vl">GYMRAT Launch Price</div>
+    <div class="vnew">$150</div>
+    <div class="vnote">All bonuses included during the launch window only.</div>
+  </div>
+  <div style="text-align:center" class="rv">
+    <a href="https://app.coachiq.io/gymrat-basketball-grb/grb?d=available-programs&purchase=12854" class="btn-orange lg">Become a GYMRAT — $150</a>
+  </div>
+</section>
+
+<!-- ══════════════════ FOR / NOT FOR ══════════════════ -->
+<section class="fit">
+  <div class="eyebrow light rv">Right Fit Check</div>
+  <h2 class="rv" style="font-family:'Bebas Neue',sans-serif; font-size:clamp(52px,7vw,88px); letter-spacing:.03em; line-height:.9; color:var(--white); margin-bottom:48px;">IS THIS<br>FOR YOU?</h2>
+  <div class="fit-grid">
+    <div class="fit-col yes rv">
+      <div class="fit-col-title">✓ This Is For You If:</div>
+      <ul class="fit-list">
+        <li><span class="fit-icon">✓</span>You're 11–18 and already play school or AAU ball</li>
+        <li><span class="fit-icon">✓</span>You feel behind kids who have trainers and more resources</li>
+        <li><span class="fit-icon">✓</span>You're willing to train 30–45 minutes most days for 30 days</li>
+        <li><span class="fit-icon">✓</span>You want a clear plan instead of random drills</li>
+        <li><span class="fit-icon">✓</span>You're hungry and tired of guessing what to work on</li>
+      </ul>
+    </div>
+    <div class="fit-col no rv d1">
+      <div class="fit-col-title">✕ This Is Not For You If:</div>
+      <ul class="fit-list">
+        <li><span class="fit-icon">✕</span>You won't train unless a coach is watching</li>
+        <li><span class="fit-icon">✕</span>You expect D1 offers without putting in consistent work</li>
+        <li><span class="fit-icon">✕</span>You just want to "mess around" at open gym</li>
+        <li><span class="fit-icon">✕</span>You're looking for shortcuts instead of a system</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ QUOTE STRIP ══════════════════ -->
+<div class="quote-strip">
+  <div class="quote-photo rv">
+    <img src="Pictures/TREY_3POINTS.JPG" alt="Trey shooting a three-pointer in college">
+  </div>
+  <div class="quote-copy rv d1">
+    <div class="big-quote">
+      "Hard work beats talent when talent <em>doesn't work hard.</em> Give serious players a real system and watch what happens."
+    </div>
+    <div class="big-quote-author">— GymRat Basketball</div>
   </div>
 </div>
 
-<!-- ═══════════════════════════
-     WHAT YOU GET
-════════════════════════════ -->
-<section class="wyg">
-  <div class="wyg-inner">
-    <div class="wyg-left">
-      <div class="eyebrow rv">What's Inside</div>
-      <h2 class="sec-h rv">WHAT YOU<br>GET TODAY</h2>
-      <div class="wyg-list">
-        <div class="wyg-item rv">
-          <div class="wyg-num">01</div>
-          <div class="wyg-body">
-            <strong>Day 1 &amp; Day 2 Workouts</strong>
-            <p>Straight from the 30 Day Solo Hooper Blueprint — no guessing, no filler.</p>
-          </div>
-        </div>
-        <div class="wyg-item rv d1">
-          <div class="wyg-num">02</div>
-          <div class="wyg-body">
-            <strong>Exact Reps, Drills &amp; Demo Videos</strong>
-            <p>So you know precisely what to do and how to do it — every single drill.</p>
-          </div>
-        </div>
-        <div class="wyg-item rv d2">
-          <div class="wyg-num">03</div>
-          <div class="wyg-body">
-            <strong>Warm-Up &amp; Ball-Handling Routine</strong>
-            <p>A simple routine you can run on any driveway, outdoor court, or open space.</p>
-          </div>
-        </div>
-        <div class="wyg-item rv d3">
-          <div class="wyg-num">04</div>
-          <div class="wyg-body">
-            <strong>Coaching Cues From Trey</strong>
-            <p>Stop doing drills wrong. Get the real corrections that make reps actually count.</p>
-          </div>
-        </div>
-        <div class="wyg-item rv d4">
-          <div class="wyg-num">05</div>
-          <div class="wyg-body">
-            <strong>Preview of the Full 30-Day Plan</strong>
-            <p>See the structure, the detail, and what real training looks like inside the blueprint.</p>
-          </div>
-        </div>
-      </div>
-      <a href="https://app.coachiq.io/gymrat-basketball-grb/grb/packages?purchase=13025" class="btn-primary rv">Send Me the Free Starter →</a>
+<!-- ══════════════════ GUARANTEE ══════════════════ -->
+<section class="guar">
+  <div class="guar-inner">
+    <div class="guar-left rv">
+      <div class="eyebrow">Zero Risk</div>
+      <h2 class="sec-h" style="font-family:'Bebas Neue',sans-serif; font-size:clamp(48px,5.5vw,72px); letter-spacing:.03em; line-height:.9; color:var(--black); margin-bottom:24px;">30-DAY<br>CONFIDENCE<br>GUARANTEE</h2>
+      <p>Do the workouts for 30 days. If you don't feel noticeably more confident and skilled with the ball, email us and we'll refund you.</p>
+      <p class="sub">No questions. No hoops. We stand behind this because we know what happens when serious players follow a real plan.</p>
     </div>
-    <div class="wyg-right rv">
-      <div class="coach-wrap">
-        <img src="Pictures/TREY_GRB.jpg" alt="Trey coaching on the court">
-        <div class="coach-caption">
-          <div class="c-role">Creator &amp; Head Coach</div>
-          <div class="c-name">Trey — GymRat Basketball</div>
-        </div>
+    <div class="guar-box rv d1">
+      <div class="guar-box-icon">
+        <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
+          <path d="M26 4L6 13v16c0 11.5 8.5 21 20 23 11.5-2 20-11.5 20-23V13L26 4z" stroke="#FF5A00" stroke-width="1.8" fill="rgba(255,90,0,.06)"/>
+          <path d="M18 26l5 5 11-11" stroke="#FF5A00" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h3>30-Day Money-Back Guarantee</h3>
+      <p>Train for 30 days. If you're not noticeably more skilled and confident with the ball — email us. We'll send your money back. No fine print. No conditions. We're that confident in the Blueprint.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ PRICING ══════════════════ -->
+<section class="pricing" id="pricing">
+  <div class="pricing-inner">
+    <div class="pricing-left rv">
+      <div class="urgency-pill">⚡ GYMRAT Launch Window — Limited Time</div>
+      <h2 class="sec-h" style="font-family:'Bebas Neue',sans-serif; font-size:clamp(52px,6.5vw,88px); letter-spacing:.03em; line-height:.88; color:var(--white); margin-bottom:18px;">GYMRAT<br>LAUNCH: $150</h2>
+      <p>Regular price: $249. All 6 bonuses included during launch. After the window closes, the price goes up and the GRB Skills Vault closes permanently.</p>
+      <div class="price-compare">
+        <div class="price-reg">$249</div>
+        <div class="price-arrow">→</div>
+        <div class="price-now">$150</div>
+      </div>
+    </div>
+    <div class="pricing-right rv d1">
+      <a href="https://app.coachiq.io/gymrat-basketball-grb/grb?d=available-programs&purchase=12854" class="btn-orange">BECOME A GYMRAT FOR $150 →</a>
+      <p class="price-note">Spots limited for extra support. When we hit our cap, we close enrollment.</p>
+      <div class="price-micros">
+        <span>Lifetime Access</span>
+        <span>30-Day Money-Back Guarantee</span>
+        <span>Instant Delivery to GRB App</span>
+        <span>All 6 Bonuses Included</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════
-     WHY DIFFERENT
-════════════════════════════ -->
-<section class="why">
-  <div class="why-inner">
-    <div class="eyebrow rv">Why This Is Different</div>
-    <h2 class="sec-h rv">NOT YOUTUBE.<br>A REAL SYSTEM.</h2>
-    <p class="rv d1">Most players in small towns just copy random YouTube drills. This is the actual first 2 days of a complete 30-day system I used with small-town hoopers to get them college ready. You'll see the structure, the detail, and how much better real training feels.</p>
+<!-- ══════════════════ FAQ ══════════════════ -->
+<section class="faq" id="faq">
+  <div class="faq-inner">
+    <div class="faq-left rv">
+      <div class="eyebrow">Got Questions</div>
+      <h2 class="sec-h" style="font-family:'Bebas Neue',sans-serif; font-size:clamp(52px,6vw,80px); letter-spacing:.03em; line-height:.9; color:var(--black); margin-bottom:16px;">COMMON<br>QUESTIONS</h2>
+      <p>Short, direct answers. If you still have questions after reading these, that's exactly why the Blueprint was built the way it was.</p>
+    </div>
+    <div class="faq-list rv d1">
+      <div class="faq-item">
+        <button class="faq-q" onclick="faqToggle(this)">
+          <span class="faq-q-t">What if I don't have a gym every day?</span>
+          <div class="faq-ico"><span class="faq-plus">+</span></div>
+        </button>
+        <div class="faq-ans"><p>Most workouts can be done on a driveway, outdoor court, or any open space. You don't need a full facility. That's exactly why I built the Blueprint the way I did.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="faqToggle(this)">
+          <span class="faq-q-t">How much time per day does this take?</span>
+          <div class="faq-ico"><span class="faq-plus">+</span></div>
+        </button>
+        <div class="faq-ans"><p>30–45 minutes most days. It's designed for players who have school, practice, and a life. That's exactly why I built the Blueprint the way I did.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="faqToggle(this)">
+          <span class="faq-q-t">What if I'm younger or older than 11–18?</span>
+          <div class="faq-ico"><span class="faq-plus">+</span></div>
+        </button>
+        <div class="faq-ans"><p>The skills and structure work for any serious player building their game. If you're putting in the work, the Blueprint is for you. That's exactly why I built the Blueprint the way I did.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="faqToggle(this)">
+          <span class="faq-q-t">Can a parent buy this for their kid?</span>
+          <div class="faq-ico"><span class="faq-plus">+</span></div>
+        </button>
+        <div class="faq-ans"><p>Absolutely. Most GYMRATs are parents who want to give their kid a real edge. The app is easy to set up and use. That's exactly why I built the Blueprint the way I did.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="faqToggle(this)">
+          <span class="faq-q-t">How is this different from YouTube drills?</span>
+          <div class="faq-ico"><span class="faq-plus">+</span></div>
+        </button>
+        <div class="faq-ans"><p>YouTube gives you random content. The Blueprint gives you a 30-day progression — right drills, right order, clear reps. You're training, not scrolling. That's exactly why I built the Blueprint the way I did.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="faqToggle(this)">
+          <span class="faq-q-t">How do I access everything after purchase?</span>
+          <div class="faq-ico"><span class="faq-plus">+</span></div>
+        </button>
+        <div class="faq-ans"><p>Instant access inside the GRB app. Download on any phone, log in, and your full program + all bonuses are right there. That's exactly why I built the Blueprint the way I did.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="faqToggle(this)">
+          <span class="faq-q-t">What if I miss a day?</span>
+          <div class="faq-ico"><span class="faq-plus">+</span></div>
+        </button>
+        <div class="faq-ans"><p>Pick up where you left off. The Blueprint is self-paced — life happens. Missing a day doesn't restart the clock. That's exactly why I built the Blueprint the way I did.</p></div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════
-     OPT-IN FORM
-════════════════════════════ -->
-<section class="form-sec" id="form">
-  <div class="form-wrap">
-    <div class="form-eyebrow rv">Get Instant Access</div>
-    <h2 class="sec-h rv">GET DAY 1<br><em>RIGHT NOW</em></h2>
-    <a href="https://app.coachiq.io/gymrat-basketball-grb/grb/packages?purchase=13025" class="f-submit rv d1">SEND ME DAY 1 NOW →</a>
-    <p class="f-disclaimer rv d2">No spam. No credit card. Just the workouts. Unsubscribe anytime.</p>
+<!-- ══════════════════ FOOTER CTA ══════════════════ -->
+<footer class="footer-cta">
+  <div class="footer-cta-top">
+    <div class="fcta-left rv">
+      <div class="big1">BET ON YOURSELF.</div>
+      <div class="big2">AND DOUBLE DOWN.</div>
+      <p>The Blueprint is waiting. The only question is whether you're going to pick it up.</p>
+    </div>
+    <div class="fcta-right rv d1">
+      <a href="https://app.coachiq.io/gymrat-basketball-grb/grb?d=available-programs&purchase=12854" class="btn-orange">GET THE 30 DAY BLUEPRINT — $150</a>
+      <p class="note">Launch price $150 · Regular $249 · Lifetime access</p>
+      <div class="fcta-micro">
+        <span>30-Day Guarantee</span>
+        <span>Instant Access</span>
+        <span>All Bonuses Included</span>
+      </div>
+    </div>
   </div>
-</section>
-
-<!-- ═══════════════════════════
-     THANK YOU
-════════════════════════════ -->
-<section id="thankyou">
-  <div class="ty-icon">
-    <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
-      <path d="M9 17l5.5 5.5 10.5-11" stroke="#FF5A00" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
+  <div class="footer-brand" aria-hidden="true">
+    <div class="footer-brand-text">GYMRAT</div>
   </div>
-  <h2 class="ty-h">YOU'RE IN.<br><em>CHECK YOUR EMAIL.</em></h2>
-  <p class="ty-p">Day 1 is on its way to your inbox right now.</p>
-  <p class="ty-spam">Don't see it in 5 minutes? Check spam or promotions.</p>
-  <div class="ty-tease">
-    <div class="ty-tease-tag">Coming Up — Watch Your Inbox</div>
-    <p>In a few days I'll open up the <strong>full 30 Day Solo Hooper Blueprint</strong> for Founding Players at a discount. This is the one that gets you college-ready. <strong>Watch your inbox.</strong></p>
+  <div class="footer-bottom">
+    <img src="Brand_assets/GRB secondary logo.JPG" alt="GymRat Basketball" class="footer-logo">
+    <p class="footer-copy">&copy; 2025 GymRat Basketball &middot; All Rights Reserved</p>
   </div>
-</section>
-
-<!-- ═══════════════════════════
-     FOOTER
-════════════════════════════ -->
-<footer class="foot">
-  <img src="Brand_assets/GRB primary logo.png" alt="GymRat Basketball">
-  <p>&copy; 2025 GymRat Basketball &middot; All Rights Reserved</p>
 </footer>
 
 <script>
-  // ── Reveal on scroll
+  // Nav hamburger
+  const hbg = document.getElementById('hbg'), mob = document.getElementById('mobmenu');
+  hbg.addEventListener('click', () => { hbg.classList.toggle('open'); mob.classList.toggle('open'); });
+  function closeMob() { hbg.classList.remove('open'); mob.classList.remove('open'); }
+  document.addEventListener('click', e => {
+    const nav = document.getElementById('nav');
+    if (!nav.contains(e.target) && !mob.contains(e.target)) closeMob();
+  });
+
+  // Scroll reveals
   const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
-    });
-  }, { threshold: 0.08 });
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+  }, { threshold: 0.07 });
   document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+  setTimeout(() => { document.querySelectorAll('.hero .rv').forEach(el => el.classList.add('in')); }, 80);
 
-  // ── Immediately reveal hero elements (above fold)
-  setTimeout(() => {
-    document.querySelectorAll('.hero .rv').forEach(el => el.classList.add('in'));
-  }, 80);
-
-  // ── Form submit → show thank you
-  function handleSubmit(e) {
-    e.preventDefault();
-    const fname = document.getElementById('fname').value.trim();
-    const email = document.getElementById('email').value.trim();
-    if (!fname || !email) return;
-
-    // Hide main page sections
-    ['top', 'form'].forEach(id => {
-      const el = document.getElementById(id);
-      if (el) el.style.display = 'none';
-    });
-    document.querySelector('.hero').style.display = 'none';
-    document.querySelector('.creds').style.display = 'none';
-    document.querySelector('.wyg').style.display = 'none';
-    document.querySelector('.why').style.display = 'none';
-    document.querySelector('.form-sec').style.display = 'none';
-
-    // Show thank you
-    document.getElementById('thankyou').classList.add('active');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  // FAQ accordion
+  function faqToggle(btn) {
+    const item = btn.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
   }
 </script>
-
 </body>
 </html>
